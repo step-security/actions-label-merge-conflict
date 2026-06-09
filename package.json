@@ -1,0 +1,29 @@
+{
+  "name": "actions-label-merge-conflict",
+  "version": "3.1.0",
+  "private": true,
+  "description": "GitHub Action that labels pull requests with merge conflicts.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/main.ts --out dist --minify",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "author": "step-security",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "axios": "1.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@vercel/ncc": "^0.38.4",
+    "prettier": "^3.3.3",
+    "typescript": "^5.9.0"
+  },
+  "prettier": {
+    "useTabs": true,
+    "trailingComma": "all",
+    "singleQuote": false
+  }
+}
