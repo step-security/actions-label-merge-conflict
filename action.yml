@@ -1,0 +1,44 @@
+name: "StepSecurity Label Merge Conflicts"
+description: "Detect pull requests with merge conflicts and label them. Optionally remove a separate label and post comments when a PR becomes dirty or clean again."
+author: "step-security"
+
+inputs:
+  repoToken:
+    description: "GitHub token used to read pull requests and mutate labels/comments. Typically secrets.GITHUB_TOKEN."
+    required: true
+  dirtyLabel:
+    description: "Label to add to a pull request whose mergeable state is CONFLICTING."
+    required: true
+  removeOnDirtyLabel:
+    description: "Label to remove from a pull request when it becomes dirty (e.g. 'ready to merge')."
+    required: false
+  retryAfter:
+    description: "Seconds to wait before re-checking pull requests whose mergeable state is UNKNOWN."
+    required: false
+    default: "120"
+  retryMax:
+    description: "Maximum number of retries when GitHub reports UNKNOWN mergeable state."
+    required: false
+    default: "5"
+  continueOnMissingPermissions:
+    description: "If true, log a warning and continue when the supplied token lacks permission to modify labels or comments. Useful for fork pull requests with a read-only token."
+    required: false
+    default: "false"
+  commentOnDirty:
+    description: "Markdown body for a comment posted the first time a pull request is marked dirty."
+    required: false
+  commentOnClean:
+    description: "Markdown body for a comment posted when a previously-dirty pull request becomes clean."
+    required: false
+
+outputs:
+  prDirtyStatuses:
+    description: "JSON object mapping each pull request number to a boolean indicating whether it is currently dirty."
+
+runs:
+  using: "node24"
+  main: "dist/index.js"
+
+branding:
+  icon: "git-pull-request"
+  color: "purple"
