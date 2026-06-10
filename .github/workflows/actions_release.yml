@@ -11,11 +11,6 @@ on:
         required: false
         type: string
         default: "24"
-      script:
-        description: "Specify the build script to run"
-        required: false
-        type: string
-        default: "yarn build"
 
 permissions:
   contents: read
@@ -31,4 +26,3 @@ jobs:
     with:
       tag: "${{ github.event.inputs.tag }}"
       node_version: "${{ github.event.inputs.node_version }}"
-      script: "${{ github.event.inputs.script }}"
