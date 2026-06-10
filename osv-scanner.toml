@@ -1,0 +1,19 @@
+[[IgnoredVulns]]
+id = "GHSA-v9p9-hfj2-hcw8" # CVE-2026-2229
+reason = "undici WebSocket client permessage-deflate DoS (invalid server_max_window_bits -> RangeError). This action never uses the undici WebSocket client."
+
+[[IgnoredVulns]]
+id = "GHSA-vrm6-8vpv-qv8q" # CVE-2026-1526
+reason = "undici WebSocket client permessage-deflate decompression-bomb DoS. This action never uses the undici WebSocket client."
+
+[[IgnoredVulns]]
+id = "GHSA-g9mf-h72j-4rw9" # CVE-2026-22036
+reason = "undici fetch() unbounded Content-Encoding decompression chain (DoS). The action only fetches from trusted api.github.com responses, never from an attacker-controlled server."
+
+[[IgnoredVulns]]
+id = "GHSA-2mjp-6q6p-2qxm" # CVE-2026-1525
+reason = "undici request smuggling via duplicate Content-Length when headers are passed as flat arrays. The action never calls undici.request()/Client with user-controlled or flat-array headers; Octokit sets fixed, normalized headers."
+
+[[IgnoredVulns]]
+id = "GHSA-4992-7rv2-5pvq" # CVE-2026-1527
+reason = "undici CRLF injection via the `upgrade` option of client.request(). The action never uses undici's low-level client or the `upgrade` option."

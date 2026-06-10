@@ -1,4 +1,4 @@
-name: Yarn Audit Fix Run
+name: NPM Audit Fix Run
 
 on:
   workflow_dispatch:
@@ -12,15 +12,7 @@ on:
         required: false
         type: string
         default: "24"
-      package_manager:
-        description: "Specify package manager (npm or yarn)"
-        required: false
-        default: "yarn"
-      script:
-        description: "Specify the build script to run"
-        required: false
-        type: string
-        default: "yarn build"
+
   schedule:
     - cron: "0 0 * * 1"
 
@@ -30,8 +22,6 @@ jobs:
     with:
       base_branch: ${{ inputs.base_branch || 'main' }}
       node_version: "${{ inputs.node_version || '24' }}"
-      package_manager: ${{ inputs.package_manager || 'yarn' }}
-      script: ${{ inputs.script || 'yarn build' }}
 
 permissions:
   contents: write

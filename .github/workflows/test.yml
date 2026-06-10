@@ -26,13 +26,13 @@ jobs:
           node-version: "24"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Format check
-        run: yarn format && git diff --exit-code
+        run: npm run format && git diff --exit-code
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Dist up to date?
         run: git diff --exit-code dist/
